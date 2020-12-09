@@ -1,2 +1,0 @@
-"dfddafadfadfadfadfdf"
-import random
