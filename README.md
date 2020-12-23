@@ -1,4 +1,4 @@
 # PatternRecognition
 
-Status of Last Deployment:<br>
-<img src="https://github.com/PavelGenitsoy/PatternRecogniton/workflows/Test-CI/badge.svg?branch=DeVelop"><br>
+Status of Last Deployment:
+![Test-CI](https://github.com/PavelGenitsoy/PatternRecognition/workflows/Test-CI/badge.svg?branch=DeVelop)
