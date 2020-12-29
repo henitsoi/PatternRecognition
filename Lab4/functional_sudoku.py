@@ -109,7 +109,6 @@ def deletion_algorithm(massive):
             return massive
         print('We need to use one more time deletion_algorithm')
         deletion_algorithm(massive)
-    # print('Admissibility q = ', massive.sum())
     return massive
 
 
