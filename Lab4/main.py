@@ -1,5 +1,5 @@
-from functional_sudoku import markup_search_algorithm as msa, deletion_algorithm as da, vertex_admissibility_q as vaq, \
-    transition_to_real_num as t_trn, matrix_show as ms
+from functional_sudoku import markup_search_algorithm as msa, vertex_admissibility_q as vaq, transition_to_real_num as \
+    t_trn, matrix_show as ms
 import numpy as np
 from time import perf_counter
 
@@ -33,9 +33,9 @@ main_table_sudoku2 = \
         [0, 0, 0, 0, 7, 0, 0, 4, 2]
     ]
 
-"""
-нерешаемое судоку3
-"""
+
+# нерешаемое судоку3
+
 main_table_sudoku3 = \
     [
         [8, 1, 0, 0, 3, 0, 0, 2, 7],
@@ -51,29 +51,37 @@ main_table_sudoku3 = \
         [0, 0, 0, 0, 7, 0, 0, 4, 2]
     ]
 
+print('//---------------------------------------------//')
+print('Original first sudoku:')
+print(ms(main_table_sudoku1))
 
 print('//---------------------------------------------//')
 start = perf_counter()
-print(t_trn(msa(da(vaq(main_table_sudoku1)))))
+print(t_trn(msa(vaq(main_table_sudoku1))))
 end = perf_counter()
 print('//---------------------------------------------//')
 print('Time of solution for the first sudoku: ', end - start)
 print('//---------------------------------------------//')
 
+print('Original second sudoku:')
+print(ms(main_table_sudoku2))
+print('//---------------------------------------------//')
 
 start_ = perf_counter()
-print(t_trn(msa(da(vaq(main_table_sudoku2)))))
+print(t_trn(msa(vaq(main_table_sudoku2))))
 end_ = perf_counter()
 print('//---------------------------------------------//')
 print('Time of solution for the second sudoku: ', end_ - start_)
 print('//---------------------------------------------//')
 
+# нерешаемое судоку3
 
-"""
-нерешаемое судоку3
-"""
+# print('Original third sudoku:')
+# print(ms(main_table_sudoku3))
+# print('//---------------------------------------------//')
+
 # start3 = perf_counter()
-# print(t_trn(msa(da(vaq(main_table_sudoku3)))))
+# print(t_trn(msa(vaq(main_table_sudoku3))))
 # end3 = perf_counter()
 # print('//---------------------------------------------//')
 # print('Time of solution for the second sudoku: ', end3 - start3)

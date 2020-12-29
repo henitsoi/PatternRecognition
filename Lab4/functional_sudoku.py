@@ -114,6 +114,10 @@ def deletion_algorithm(massive):
 
 def markup_search_algorithm(array):
     row, col, num = array.shape[0], array.shape[1], array.shape[2]
+    data = deletion_algorithm(array)
+
+    if check_for_good_markup(data) == 1 and data.sum() == 81:
+        return array
 
     for i in range(row):
         for j in range(col):
