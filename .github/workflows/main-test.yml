@@ -38,3 +38,4 @@ jobs:
       - name: Test with doctest
         run: |
          python -m doctest -v Lab3/func.py
+         python -m doctest -v Lab4/functional_sudoku.py
