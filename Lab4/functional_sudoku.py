@@ -118,25 +118,26 @@ def markup_search_algorithm(array):
 
     if check_for_good_markup(data) == 1 and data.sum() == 81:
         return array
-
-    for i in range(row):
-        for j in range(col):
-            if sum_check(array, i, j, num) > 1:
-                array_ = array.copy()
-                index_nonzero_elements = np.nonzero(array[i][j])[0]
-                for count in index_nonzero_elements:
-                    for k in index_nonzero_elements:
-                        if count != k:
-                            array[i][j][k] = 0
-                    arr_aft_del_alg = array_
-                    arr_aft_del_alg_ = deletion_algorithm(array)
-                    if (arr_aft_del_alg == arr_aft_del_alg_).all():
-                        return array
-                    elif check_for_good_markup(arr_aft_del_alg_) == 0:
-                        array = array_
-                    else:
-                        array = arr_aft_del_alg_
-                        break
+    else:
+        data_ = deletion_algorithm(array)
+        for i in range(row):
+            for j in range(col):
+                if sum_check(data_, i, j, num) > 1:
+                    array_ = data_.copy()
+                    index_nonzero_elements = np.nonzero(data_[i][j])[0]
+                    for count in index_nonzero_elements:
+                        for k in index_nonzero_elements:
+                            if count != k:
+                                data_[i][j][k] = 0
+                        arr_aft_del_alg = array_
+                        arr_aft_del_alg_ = deletion_algorithm(data_)
+                        if (arr_aft_del_alg == arr_aft_del_alg_).all():
+                            return array
+                        elif check_for_good_markup(arr_aft_del_alg_) == 0:
+                            data_ = array_
+                        else:
+                            data_ = arr_aft_del_alg_
+                            break
     return array
 
 
