@@ -83,10 +83,6 @@ def deletion_algorithm(massive):
     massive_ = massive.copy()
     row, col, num = massive.shape[0], massive.shape[1], massive.shape[2]
 
-    if check_for_good_markup(massive) == 0:
-        print('upcheck_Unreal to solve!!!')
-        return massive
-
     for i in range(row):
         for j in range(col):
             if sum_check(massive, i, j, num) == 1:
@@ -134,15 +130,19 @@ def markup_search_algorithm(array):
                             if count != k:
                                 data_[i][j][k] = 0
                         arr_aft_del_alg = array_
-                        arr_aft_del_alg_ = deletion_algorithm(data_)
-                        if (arr_aft_del_alg == arr_aft_del_alg_).all():
-                            return array
-                        elif check_for_good_markup(arr_aft_del_alg_) == 0:
+                        if check_for_good_markup(data_) == 1:
+                            arr_aft_del_alg_ = deletion_algorithm(data_)
+                            if (arr_aft_del_alg == arr_aft_del_alg_).all():
+                                return array
+                            elif check_for_good_markup(arr_aft_del_alg_) == 0:
+                                array_[i][j][count] = 0
+                                data_ = array_
+                            else:
+                                data_ = arr_aft_del_alg_
+                                break
+                        else:
                             array_[i][j][count] = 0
                             data_ = array_
-                        else:
-                            data_ = arr_aft_del_alg_
-                            break
     return array
 
 
