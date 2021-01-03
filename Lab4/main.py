@@ -77,11 +77,11 @@ print('//---------------------------------------------//')
 # нерешаемое судоку3
 
 # print('Original third sudoku:')
-# print(ms(main_table_sudoku3))
+# pf(main_table_sudoku3)
 # print('//---------------------------------------------//')
 
 # start3 = perf_counter()
-# print(t_trn(msa(vaq(main_table_sudoku3))))
+# pf(t_trn(msa(vaq(main_table_sudoku3))))
 # end3 = perf_counter()
 # print('//---------------------------------------------//')
 # print('Time of solution for the second sudoku: ', end3 - start3)
