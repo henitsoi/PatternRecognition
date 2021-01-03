@@ -1,5 +1,5 @@
 from functional_sudoku import markup_search_algorithm as msa, vertex_admissibility_q as vaq, transition_to_real_num as \
-    t_trn, matrix_show as ms
+    t_trn, print_field as pf
 import numpy as np
 from time import perf_counter
 
@@ -53,22 +53,22 @@ main_table_sudoku3 = \
 
 print('//---------------------------------------------//')
 print('Original first sudoku:')
-print(ms(main_table_sudoku1))
+pf(main_table_sudoku1)
 
 print('//---------------------------------------------//')
 start = perf_counter()
-print(t_trn(msa(vaq(main_table_sudoku1))))
+pf(t_trn(msa(vaq(main_table_sudoku1))))
 end = perf_counter()
 print('//---------------------------------------------//')
 print('Time of solution for the first sudoku: ', end - start)
 print('//---------------------------------------------//')
 
 print('Original second sudoku:')
-print(ms(main_table_sudoku2))
+pf(main_table_sudoku2)
 print('//---------------------------------------------//')
 
 start_ = perf_counter()
-print(t_trn(msa(vaq(main_table_sudoku2))))
+pf(t_trn(msa(vaq(main_table_sudoku2))))
 end_ = perf_counter()
 print('//---------------------------------------------//')
 print('Time of solution for the second sudoku: ', end_ - start_)

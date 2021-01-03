@@ -1,11 +1,32 @@
 import numpy as np
 import pandas as pd
+import sys
 
 
-def matrix_show(array):
-    return pd.DataFrame(np.array([array[i][j] for i in range(len(array)) for j in range(len(array[i]))]).reshape(9, 9),
-                        columns=['c_0', 'c_1', 'c_2', 'c_3', 'c_4', 'c_5', 'c_6', 'c_7', 'c_8']) \
-        if len(array) > 0 else 0
+# def matrix_show(array): return pd.DataFrame(np.array([array[i][j] for i in range(len(array)) for j in range(len(
+# array[i]))]).reshape(9, 9), columns=['c_0', 'c_1', 'c_2', 'c_3', 'c_4', 'c_5', 'c_6', 'c_7', 'c_8']) \ if len(
+# array) > 0 else 0
+
+
+def output(a):
+    sys.stdout.write(str(a))
+
+
+def print_field(field_):
+    field = np.array(field_)
+    for i in range(len(field)):
+        for j in range(len(field[i])):
+            if field[i][j] == 0:
+                output('.')
+            else:
+                output(field[i][j])
+            if (j + 1) % 3 == 0 and j < 8:
+                output(' |')
+            if j != 8:
+                output(' ')
+        output('\n')
+        if (i + 1) % 3 == 0 and i < 8:
+            output("- - - + - - - + - - -\n")
 
 
 def check_for_good_markup(massive):
@@ -105,7 +126,7 @@ def deletion_algorithm(massive):
     elif check_for_good_markup(massive) == 1 and massive.sum() > 81:
         if (massive_ == massive).all():
             print('Now only the markup search algorithm will help us...')
-            print(transition_to_real_num(massive))
+            print_field(transition_to_real_num(massive))
             return massive
         print('We need to use one more time deletion_algorithm')
         deletion_algorithm(massive)
