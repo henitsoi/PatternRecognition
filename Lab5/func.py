@@ -5,7 +5,11 @@ from os.path import splitext
 from os import walk
 
 
-def summ_for_bigramm(list_, start, end):
+def sum_for_bigramm(list_, start, end):
+    """
+    >>> sum_for_bigramm([1,2,3,4,5,6,7,8,9], 0, 4)
+    10
+    """
     return sum([list_[j] for j in range(start, end)])
 
 
@@ -28,7 +32,7 @@ def bigramms_prob(path, first_letter, second_letter):
 
     for i in lis_iterate:
         it_end += i
-        su = summ_for_bigramm(lis_val, it_start, it_end)
+        su = sum_for_bigramm(lis_val, it_start, it_end)
         for j in range(it_start, it_end):
             lis_val[j] /= su
         it_start += i
@@ -67,21 +71,15 @@ def x_picture_char_dictionary(path, const_path):
     return dictionary, count_of_char
 
 
-# def q_part(x_char, standard_char_massive, noise_level):
-#     if noise_level == 0:
-#         return sum([x_char[i][j] for i in range(28) for j in range(28) if x_char[i][j] == standard_char_massive[i][j]])
-#     elif noise_level == 1:
-#         return sum([x_char[i][j] for i in range(28) for j in range(28) if x_char[i][j] != standard_char_massive[i][j]])
-#     else:
-#         return sum([x_char[i][j] for i in range(28) for j in range(28) if x_char[i][j] != \
-#                     standard_char_massive[i][j]]) * np.log(noise_level) + sum([x_char[i][j] \
-#                                                                                for i in range(28) for j in range(28) if
-#                                                                                x_char[i][j] == standard_char_massive[i][
-#                                                                                    j]]) * np. \
-#                    log(1 - noise_level)
 
 
 def q_part(x_char, standard_char_massive, noise_level):
+    """
+    >>> q_part(np.array([1,0,0,1,0,1,0]), np.array([1,1,0,1,1,1,0]), 0)
+    5
+    >>> q_part(np.array([1,0,0,1,0,1,0]), np.array([1,1,0,1,1,1,0]), 1)
+    2
+    """
     if noise_level == 0:
         return np.array(x_char == standard_char_massive).sum()
     elif noise_level == 1:
@@ -128,7 +126,6 @@ def r_part(path_for_bigramms, x_char_dictionary, counts_of_letters, standard_cha
             else:
                 dictionary[i][j] = f_part(path_for_bigramms, x_char_dictionary, counter_,
                                           standard_chars_dictionary, j, noise_lvl, 0, dictionary[i - 1], 0)
-    print(dictionary)
     return dictionary
 
 
@@ -148,5 +145,8 @@ def k_last_part(path_for_bigramms, x_char_dictionary, counts_of_letters, standar
     print(' '.join(gl_list))
 
 
-# if __name__ == '__main__':
-#     import doctest
+if __name__ == '__main__':
+    import doctest
+
+    doctest.testmod()
+
