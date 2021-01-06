@@ -5,7 +5,7 @@ from os.path import splitext
 from os import walk
 
 
-def sum_for_bigramm(list_, start, end):
+def summ_for_bigramm(list_, start, end):
     """
     >>> sum_for_bigramm([1,2,3,4,5,6,7,8,9], 0, 4)
     10
@@ -32,7 +32,7 @@ def bigramms_prob(path, first_letter, second_letter):
 
     for i in lis_iterate:
         it_end += i
-        su = sum_for_bigramm(lis_val, it_start, it_end)
+        su = summ_for_bigramm(lis_val, it_start, it_end)
         for j in range(it_start, it_end):
             lis_val[j] /= su
         it_start += i
@@ -69,8 +69,6 @@ def x_picture_char_dictionary(path, const_path):
         test_array = my_img[:, width * i:width * (i + 1)]
         dictionary[i] = test_array
     return dictionary, count_of_char
-
-
 
 
 def q_part(x_char, standard_char_massive, noise_level):
@@ -149,4 +147,3 @@ if __name__ == '__main__':
     import doctest
 
     doctest.testmod()
-
