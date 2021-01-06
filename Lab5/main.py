@@ -5,14 +5,11 @@ from time import sleep
 
 
 def inside(testnum, beginRange, endRange):
-    return beginRange < testnum < endRange
+    return beginRange <= testnum <= endRange
 
 
-const_str_path_to_input = 'data/input/'
-const_str_path_to_json = 'data/frequencies.json'
-const_string_alphabet = 'data/alphabet'
-const_string_x = 'very simple text_0.7.png'
-const_string_x1 = 'but thence i learn and find the lesson true drugs poison him that so feil sick of you_0.4.png'
+const_str_path_massive = np.array(['data/input/', 'data/frequencies.json', 'data/alphabet'])
+
 
 const_str_file_massive = np.array([
     ['but thence i learn and find the lesson true drugs poison him that so feil sick of you_0.3.png'],
@@ -38,24 +35,36 @@ const_str_file_massive = np.array([
     ['very simple text_1.png']
 ])
 
+approximate_time = np.array(['27 sec', '95 sec', '144 sec'])
+
 while True:
     for i in range(len(const_str_file_massive)):
-        print('{}. '.format(i + 1), const_str_file_massive[i])
-    print("-1.  EXIT")
-    cmd = int(input("Choose a filename: ")) - 1
-    if inside(cmd, -1, 22):
-        c = const_str_file_massive[cmd]
-        print(c[0])
-        sleep(5)
-    elif cmd == -2:
+        print('{}. '.format(i + 1), const_str_file_massive[i][0])
+    print('0.  EXIT')
+    cmd = int(input('Choose a filename: ')) - 1
+    if inside(cmd, 0, 20):
+        print(const_str_file_massive[cmd][0])
+        noise_lvl = float(input('Choose a lvl of noise in range[0..1]: '))
+        if inside(noise_lvl, 0.00, 1.00):
+            if inside(cmd, 0, 5):
+                print('The code is poorly optimized, therefore, the recognition time will be approximately: ',
+                      approximate_time[2])
+            elif inside(cmd, 6, 11):
+                print('The code is poorly optimized, therefore, the recognition time will be approximately: ',
+                      approximate_time[1])
+            else:
+                print('The code is poorly optimized, therefore, the recognition time will be approximately: ',
+                      approximate_time[0])
+            standard_ = standard_chars(const_str_path_massive[2])
+            x_noisy_char, counts_ = x_picture_char_dictionary(const_str_file_massive[cmd][0], const_str_path_massive[0])
+            start_ = perf_counter()
+            k_last_part(const_str_path_massive[1], x_noisy_char, counts_, standard_, noise_lvl)
+            end_ = perf_counter()
+            print('\nTime of solution: ', end_ - start_)
+            sleep(10)
+        else:
+            print('Incorrect number!!')
+    elif cmd == -1:
         break
     else:
-        print("Вы ввели не правильное значение")
-
-# x_, counts_ = x_picture_char_dictionary(const_string_x, const_str_path_to_input)
-# a_ = standard_chars(const_string_alphabet)
-#
-# start_ = perf_counter()
-# k_last_part(const_str_path_to_json, x_, counts_, a_, 0.7)
-# end_ = perf_counter()
-# print('\nTime of solution: ', end_ - start_)
+        print('Not correct value!!')
