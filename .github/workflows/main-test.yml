@@ -39,3 +39,4 @@ jobs:
         run: |
          python -m doctest -v Lab3/func.py
          python -m doctest -v Lab4/functional_sudoku.py
+         python -m doctest -v Lab5/func.py
