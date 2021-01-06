@@ -32,7 +32,7 @@ def bigramms_prob(path, first_letter, second_letter):
 
     for i in lis_iterate:
         it_end += i
-        su = summ_for_bigramm(lis_val, it_start, it_end)
+        su = sum_for_bigramm(lis_val, it_start, it_end)
         for j in range(it_start, it_end):
             lis_val[j] /= su
         it_start += i
