@@ -5,7 +5,7 @@ from os.path import splitext
 from os import walk
 
 
-def summ_for_bigramm(list_, start, end):
+def sum_for_bigramm(list_, start, end):
     """
     >>> sum_for_bigramm([1,2,3,4,5,6,7,8,9], 0, 4)
     10
