@@ -4,8 +4,8 @@ import numpy as np
 from time import sleep
 
 
-def inside(testnum, beginRange, endRange):
-    return beginRange <= testnum <= endRange
+def inside(test_num, begin_range, end_range):
+    return begin_range <= test_num <= end_range
 
 
 const_str_path_massive = np.array(['data/input/', 'data/frequencies.json', 'data/alphabet'])
